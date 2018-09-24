@@ -1,0 +1,63 @@
+@import url(menu.css);
+@import url(banner.css);
+@import url(products.css);
+@import url(clients.css);
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    min-height: 100vh;
+}
+.body-content{
+    padding: 0;
+    margin: 0;
+}
+
+.subtitle{
+    border-bottom:1px solid black;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dark{
+    color:white;
+    background-color: #000647;
+}
+
+.dark .subtitle{
+    color:white;
+    border-bottom:1px solid white;
+}
+
+.threedivided{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+
+.threedivided div{
+    width: 30%;
+    padding:6px;
+    text-align: center;
+}
+
+.threedivided div img{
+    width: 100%;
+    height: 300px;
+
+}
+
+.circle{
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.circle30{
+    border: 2px solid black;
+    border-radius: 30%;
+}
