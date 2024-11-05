@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TimeLineElement from "@components/cv/TimeLine.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hello 👋</div>
+    <div class="text-5xl font-bold">I'm Abraham Beens Romero</div>
+    <div class="text-3xl py-3 font-bold">Software Engineer</div>
+    <div class="py-2">
+      <text class="text-lg">
+        Experienced Systems Engineer with a strong background in web and mobile
+        development, seeking an opportunity to drive impactful solutions and
+        contribute to the growth of an innovative company. I am motivated by
+        professional development and financial stability, and I aim to leverage
+        my skills to support the company’s goals while building a lasting,
+        mutually beneficial partnership.
+      </text>
+    </div>
+    <div class="mt-8">
+      <a
+        class="btn bg-sky-400 text-white"
+        href="https://www.linkedin.com/in/abraham-beens-romero-669aa5122/"
+        target="_blank"
+      >
+        My Profile
+      </a>
+      <a
+        href="mailto:abraham.beens.90@gmail.com"
+        target="_blank"
+        class="btn btn-outline ml-5"
+      >
+        Let's connect!
+      </a>
+    </div>
+  </div>
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="FusionHit"
+      charge="Tech Lead"
+      subtitle="From 2021 - Today, Heredia, Costa Rica"
+    >
+      <b>Achievements:</b> As Tech Lead, I spearheaded the development of new app
+      modules, directed code migration across diverse technologies, and provided
+      strategic oversight for current projects, guiding the end-to-end development
+      of applications from the ground up and ensuring robust support for core systems.
+      <br />
+      <br />
+      <b>Tools used:</b> Oracle, PostgreSQL, DBeaver, ASP.NET Core (C#), JavaScript,
+      React, Angular, Bootstrap, AWS, Dapper, Bitbucket, and Jira, Phyton.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Font Sistemas"
+      charge="Developer Freelancer"
+      subtitle="From 2018 - Today, Heredia, Costa Rica"
+    >
+      <b>Achievements:</b> Developing the website and web service responsible for
+      managing assets for multiple companies nationwide, integrating the web service
+      with a mobile app developed by another team member, and providing support to
+      legacy systems within the company.
+      <br />
+      <br />
+      <b>Tools used:</b> SQL Server, ASP.NET (C#), JavaScript, jQuery, Bootstrap,
+      Entity Framework, Reporting Services, and RFID.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Evertec Inc"
+      charge="Full-Stack Developer Freelancer"
+      subtitle="From 2016 - 2021, Heredia, Costa Rica"
+    >
+      <b>Achievements:</b> Developing the intranet for a banking client in Puerto
+      Rico to manage and maintain backend processes, creating web and Windows applications
+      and services that control data exchanges with other banks, ensuring information
+      is formatted according to recipient requirements, and leading a team of developers
+      across multiple countries.
+      <br />
+      <br />
+      <b>Tools used:</b> SQL Server, ASP.NET (C#), JavaScript, jQuery, Bootstrap,
+      Entity Framework, and Reporting Services.
+    </TimeLineElement>
+  </div>
+</BaseLayout>
