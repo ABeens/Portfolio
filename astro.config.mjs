@@ -4,7 +4,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://abeens.github.io',
-  base: '/Portfolio',
+  site: 'https://abeens.github.io/Portfolio',
   integrations: [mdx(), tailwind()]
 });

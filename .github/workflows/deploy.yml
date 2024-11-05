@@ -9,12 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: '16'
 
       - name: Install dependencies
-          run: npm install
+        run: npm install
 
       - name: Build website
         run: npm run build
@@ -22,7 +23,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: ./dist  # Asegúrate de que esto sea la ruta correcta a tu salida de construcción
 
   deploy:
     needs: build
