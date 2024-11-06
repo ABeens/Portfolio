@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TimeLineElement from "@components/cv/TimeLine.astro";
+import HorizontalCard from "@components/HorizontalCard.astro";
+const basePath = import.meta.env.BASE_URL;
+---
+
+<BaseLayout>
+    <div class="mb-5">
+        <div class="text-3xl w-full font-bold">Education and Training</div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 mb-10 gap-4">
+        <HorizontalCard
+            title="Engineer's Degree"
+            download="N/A"
+            img=`${basePath}/my_title.jpg`
+            desc="2007-2013 UNEXPO - Caracas / Venezuela"
+            url=``
+        />
+        <HorizontalCard
+            title="Machine Learning: Phyton"
+            url=`${basePath}/machine_learning_phyton.jpg`
+            download="machine_learning_phyton.jpg"
+            img=`${basePath}/machine_learning_phyton.jpg`
+            desc="31 hours"
+        />
+        <HorizontalCard
+            title="AWS Cloud"
+            url=`${basePath}/AWS.jpg`
+            download="AWS_learning.jpg"
+            img=`${basePath}/AWS.jpg`
+            desc="15 hours"
+        />
+        <HorizontalCard
+            title="Legacy Flutter"
+            url=`${basePath}/flutter_front.jpg`
+            download="flutter_front.jpg"
+            img=`${basePath}/flutter_front.jpg`
+            desc="38 hours"
+        />
+        <HorizontalCard
+            title="Ethical Hacking"
+            url=`${basePath}/cyber_security.jpg`
+            download="cyber_security.jpg"
+            img=`${basePath}/cyber_security.jpg`
+            desc="22 hours"
+        />
+    </div>
+</BaseLayout>
