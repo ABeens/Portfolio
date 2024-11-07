@@ -1,16 +1,16 @@
 ---
-const { title, img, desc, url, badge, tags, download, target = "_blank" } = Astro.props;
+// Nuevo parámetro `isLink` para determinar si la card es un enlace o solo texto
+const { title, img, desc, url, badge, tags, download, target = "_blank", isLink = true } = Astro.props;
 import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 ---
 
-<div
-  class="w-full rounded-lg bg-base-100 shadow-xl transition ease-in-out hover:scale-[102%]"
->
-  <a href={url} target={target} download={download}>
-    <div class="w-full hero-content flex-row">
-      {
-        img && (
+<div class="w-full rounded-lg bg-base-100 shadow-xl transition ease-in-out hover:scale-[102%]">
+  {isLink ? (
+    // Si `isLink` es true, renderiza como enlace
+    <a href={url} target={target} download={download}>
+      <div class="w-full hero-content flex-row">
+        {img && (
           <Image
             src={img}
             width={750}
@@ -19,8 +19,37 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
             alt={title}
             class="w-24 h-24 rounded-lg object-cover"
           />
-        )
-      }
+        )}
+        <div class="grow w-full">
+          <h1 class="text-xl font-bold">
+            {title}
+            {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          </h1>
+          <p class="py-1 text-1xl">{desc}</p>
+          <div class="card-actions justify-end">
+            {tags &&
+              tags.map((tag) => (
+                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                  {tag}
+                </a>
+              ))}
+          </div>
+        </div>
+      </div>
+    </a>
+  ) : (
+    // Si `isLink` es false, renderiza como un div sin funcionalidad de enlace
+    <div class="w-full hero-content flex-row">
+      {img && (
+        <Image
+          src={img}
+          width={750}
+          height={422}
+          format="webp"
+          alt={title}
+          class="w-24 h-24 rounded-lg object-cover"
+        />
+      )}
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
@@ -28,16 +57,14 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
+          {tags &&
+            tags.map((tag) => (
+              <span class="badge badge-outline">
+                {tag}
+              </span>
+            ))}
         </div>
       </div>
     </div>
-  </a>
+  )}
 </div>
